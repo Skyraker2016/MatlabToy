@@ -1,0 +1,20 @@
+function fight(head, color)
+    H = (zeros(1080,1080,3));
+    S = imread('slogen.jpg');
+    [a,b,~] = size(S);
+    H = imresize(H, [a,b]);
+    for i = 1:a
+        for j = 1:b
+            if S(i,j,1) < 220 && S(i,j,2) < 240 && S(i,j,3) < 210
+
+                S(i,j,:) = H(i,j,:);
+            elseif (i<240 && j>700) || (i<30) || (i<400 && j>900) || (i<100 && j>650)  || (i<60 && j>516)
+                    S(i,j,:) = H(i,j,:);
+            else
+                S(i,j,:) = [color];
+            end
+        end
+    end
+    S = im2bw(S);
+    imwrite(S, ['after_',head]);
+    
