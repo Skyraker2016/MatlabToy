@@ -5,7 +5,7 @@ function fight(head, color)
     H = imresize(H, [a,b]);
     for i = 1:a
         for j = 1:b
-            if S(i,j)~=0
+            if S(i,j)>100
                 H(i,j,:) = [color];
             end
         end
